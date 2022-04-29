@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        {% for category in categorys %}
+            <div class="col-lg-4">
+               <a href="categoriy/{{ category.cat_title }}"><img class="thumbnail" src="{{ category.image.url }}"></a>
+                <div class="box-element product">
+                    <h6><strong>{{ category.cat_title }}</strong></h6>
+                    <hr>
+
+                    <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+                    <a class="btn btn-outline-success" href="#">View</a>
+                    <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}
