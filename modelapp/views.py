@@ -10,13 +10,19 @@ def home(request):
     return render(request, 'index.html', context)
 
 
-def subcategory_1(request, cat_title):
-    category = Subcategory1.objects.get()
-    context = {"categorys": category}
-    return render(request, 'sub2.html', context)
+def subcategory_1(request, id, cat_title):
+    category = Subcategory1.objects.all()
+    res = category.filter(sub1_title=id)
+    context = {"categorys": res}
+
+    return render(request, 'categiry.html', context)
 
 
-
+def subcategory_2(request, cat_title, subcategory1_name, id):
+    category = Subcategory2.objects.all()
+    res = category.filter(product_title=id)
+    context = {"categorys": res}
+    return render(request, 'sub1category.html', context)
 
 
 

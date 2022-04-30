@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% for category in categorys %}
+        <div class="col-lg-4">
+
+            <a href="/categoriy/{{ category.sub1_title }}/"><img class="thumbnail"
+                                                                 src="{{ category.product_image.url }}"></a>
+            <div class="box-element product">
+                <h6><strong>{{ category.product_title }}</strong></h6>
+                <hr>
+                <h6><strong>{{ category.product_price }} co'm  </strong></h6><br>
+                <h6><strong>{{ category.product_credit_price }} co'm / oyiga</strong></h6><hr>
+                <h6><strong>{{ category.product_model_name }}</strong></h6>
+
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock content %}

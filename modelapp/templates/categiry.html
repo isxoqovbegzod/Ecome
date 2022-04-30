@@ -4,7 +4,7 @@
     {% for category in categorys %}
         <div class="col-lg-4">
 
-            <a href="/categoriy/{{ category.cat_title }}"><img class="thumbnail"
+            <a href="/categoriy/{{ category.sub1_title }}/{{ category.subcategory1_name }}/{{ category.id }}"><img class="thumbnail"
                                                                src="{{ category.sub1_image.url }}"></a>
             <div class="box-element product">
                 <h6><strong>{{ category.subcategory1_name }}</strong></h6>
