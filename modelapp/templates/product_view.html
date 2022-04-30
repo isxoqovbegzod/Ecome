@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% for category in categorys %}
+        <div class="col-lg-10">
+            <img class="thumbnail" src="{{ category.product_image.url }}" style="height: 400px">
+            <div class="box-element product">
+                <h6><strong>{{ category.product_model_name }}</strong></h6>
+                <hr>
+                <h6><strong>{{ category.product_price }} сум</strong></h6><br>
+                <h6><strong>от {{ category.product_credit_price }}  сум/месяц</strong></h6>
+                <hr>
+                <h6><strong>{{ category.short_description }}</strong></h6>
+                <h6>{{ category.deep_description }}</h6>
+
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock content %}
