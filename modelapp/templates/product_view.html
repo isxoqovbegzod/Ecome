@@ -1,20 +1,242 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    {% for category in categorys %}
-        <div class="col-lg-10">
-            <img class="thumbnail" src="{{ category.product_image.url }}" style="height: 400px">
-            <div class="box-element product">
-                <h6><strong>{{ category.product_model_name }}</strong></h6>
-                <hr>
-                <h6><strong>{{ category.product_price }} сум</strong></h6><br>
-                <h6><strong>от {{ category.product_credit_price }}  сум/месяц</strong></h6>
-                <hr>
-                <h6><strong>{{ category.short_description }}</strong></h6>
-                <h6>{{ category.deep_description }}</h6>
+    {#    {% for category in categorys %}#}
+    {#        <div class="col-lg-10">#}
+    {#            <img class="thumbnail" src="{{ category.product_image.url }}" style="height: 400px">#}
+    {#            <div class="box-element product">#}
+    {#                <h6><strong>{{ category.product_model_name }}</strong></h6>#}
+    {#                <hr>#}
+    {#                <h6><strong>{{ category.product_price }} сум</strong></h6><br>#}
+    {#                <h6><strong>от {{ category.product_credit_price }} сум/месяц</strong></h6>#}
+    {#                <hr>#}
+    {#                <h6><strong>{{ category.short_description }}</strong></h6>#}
+    {#                <h6>{{ category.deep_description }}</h6>#}
+    {#                <hr>#}
+    {#                <div class="container-fluid p-5 bg-primary text-white text-center">#}
+    {#                    <h1>My First Bootstrap Page</h1>#}
+    {#                    <p>Resize this responsive page to see the effect!</p>#}
+    {#                </div>#}
+    {##}
+    {#                <div class="container mt-5">#}
+    {#                    <div class="row">#}
+    {#                        <div class="col-sm-4">#}
+    {#                            <h3>Column 1</h3>#}
+    {#                            {% for key, value in characteristics.items %}#}
+    {#                                <p>{{ key }}--{{ value }}</p>#}
+    {#                            {% endfor %}#}
+    {#                        </div>#}
+    {##}
+    {#                    </div>#}
+    {#                </div>#}
+    {##}
+    {#                <button class="btn btn-outline-secondary add-btn">Add to Cart</button>#}
+    {#                <a class="btn btn-outline-success" href="#">View</a>#}
+    {#                <h4 style="display: inline-block; float: right"><strong>$20</strong></h4>#}
+    {##}
+    {#            </div>#}
+    {#        </div>#}
+    {#    {% endfor %}#}
 
+
+
+    <section class="hero hero-normal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>All departments</span>
+                        </div>
+                        <ul>
+                             {% for category in all_category %}
+                                <li><a href="/categoriy/{{ category.id }}/{{ category.cat_title }}">{{ category.cat_title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="#">
+                                <div class="hero__search__categories">
+                                    All Categories
+                                    <span class="arrow_carrot-down"></span>
+                                </div>
+                                <input type="text" placeholder="What do yo u need?">
+                                <button type="submit" class="site-btn">SEARCH</button>
+                            </form>
+                        </div>
+                        <div class="hero__search__phone">
+                            <div class="hero__search__phone__icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="hero__search__phone__text">
+                                <h5>+65 11.188.888</h5>
+                                <span>support 24/7 time</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
+    <!-- Hero Section End -->
+
+
+    {% for category in categorys %}
+        <section class="blog-details spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-5 order-md-1 order-2">
+                        <div class="blog__sidebar">
+                            <div class="blog__sidebar__search">
+                                <form action="#">
+                                    <input type="text" placeholder="Search...">
+                                    <button type="submit"><span class="icon_search"></span></button>
+                                </form>
+                            </div>
+                            <div class="blog__sidebar__item">
+                                <h4>Categories</h4>
+                                <ul>
+
+                                    <li><a href="">Name --> {{ category.product_model_name }}</a></li>
+                                    <li><a href="">Price --> {{ category.product_price }}</a></li>
+                                    <li><a href="">Cridet Price --> {{ category.product_credit_price }}</a></li>
+                                    <li><a href="">Color --> {{ category.product_color }}</a></li>
+                                    <li><a href="">Categories --> {{ category.product_title }}</a></li>
+
+                                </ul>
+                            </div>
+
+
+
+                            <div class="blog__sidebar__item">
+                                <h4>Additional information</h4>
+                                      {% for key, value in characteristics.items %}
+                                <p>{{ key }}--{{ value }}</p>
+                            {% endfor %}
+                                <div class="blog__sidebar__item__tags">
+                                    <a href="#">Apple</a>
+                                    <a href="#">Beauty</a>
+                                    <a href="#">Vegetables</a>
+                                    <a href="#">Fruit</a>
+                                    <a href="#">Healthy Food</a>
+                                    <a href="#">Lifestyle</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8 col-md-7 order-md-1 order-1">
+                        <div class="blog__details__text">
+                            <img src="{{ category.product_image.url }}" alt="ecome">
+                            <p>{{ category.deep_description }}</p>
+                            <h3>{{ category.short_description }}</h3>
+                        </div>
+                        <div class="blog__details__content">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="blog__details__author">
+                                        <div class="blog__details__author__pic">
+                                            <img src="{% static "" %}img/blog/details/details-author.jpg" alt="ecome">
+                                        </div>
+                                        <div class="blog__details__author__text">
+                                            <h6>Michael Scofield</h6>
+                                            <span>Admin</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="blog__details__widget">
+                                        <ul>
+                                            <li><span>Categories:</span> {{ category.product_title }}</li>
+                                            <li><span>Tags:</span> #All, #Trending, #Cooking, #Healthy #Food, #Life #Style</li>
+                                        </ul>
+                                        <div class="blog__details__social">
+                                            <a href="#"><i class="fa fa-facebook"></i></a>
+                                            <a href="#"><i class="fa fa-twitter"></i></a>
+                                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                                            <a href="#"><i class="fa fa-envelope"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
     {% endfor %}
+
+
+    <!-- Blog Details Section End -->
+
+    <!-- Related Blog Section Begin -->
+    <section class="related-blog spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title related-blog-title">
+                        <h2>Post You May Like</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="{% static "" %}img/blog/blog-1.jpg" alt="ecome">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">Cooking tips make cooking simple</a></h5>
+                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="{% static "" %}img/blog/blog-2.jpg" alt="ecome">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">6 ways to prepare breakfast for 30</a></h5>
+                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="{% static "" %}img/blog/blog-3.jpg" alt="ecome">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">Visit the clean farm in the US</a></h5>
+                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Related Blog Section End -->
+
+
 
 {% endblock content %}

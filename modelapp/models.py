@@ -4,7 +4,6 @@ from django.db import models
 # Create your models here.
 
 class Product(models.Model):
-    # url_name = models.CharField(max_length=255)
     product_model_name = models.CharField(max_length=255)
     product_image = models.ImageField(upload_to='modelapp/static/image/product/')
     product_price = models.FloatField()
